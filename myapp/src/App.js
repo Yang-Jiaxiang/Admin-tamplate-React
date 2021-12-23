@@ -12,7 +12,6 @@ function App() {
         <Menu />
         <Title />
       </div>
-      
     </Router>
   );
 }
