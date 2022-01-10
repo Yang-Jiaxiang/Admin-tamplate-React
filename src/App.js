@@ -1,16 +1,18 @@
 import './App.css';
 import Menu from './page/menu';
+import CreateNews from './page/CreateNews';
 import {BrowserRouter as Router,Switch,Route, Redirect}from 'react-router-dom'
-import { route } from 'express/lib/router';
-import {Grid,Container}from 'semantic-ui-react'
+import './css/Semantic-UI-CSS/semantic.min.css'
 
 function App() {
     return ( 
       <Router >
         <Menu/>
-        <Switch>
-          <Route path='/posts' exact></Route>
-        </Switch>
+        <div className='content'>
+          <Switch>
+            <Route path='/CreateNews' exact><CreateNews/></Route>
+          </Switch>
+        </div>        
       </Router >
     );
 }

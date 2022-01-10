@@ -15,7 +15,7 @@ const Menu=()=>{
                     </Link>
                 </li>
                 <li>
-                    <Link to="#">
+                    <Link to="/CreateNews">
                         <span className="icon"><div className="icons"><FiFilePlus/></div></span>
                         <span className="title">新增期刊</span>
                     </Link>
