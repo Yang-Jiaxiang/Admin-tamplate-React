@@ -27,7 +27,7 @@ const Menu=()=>{
                     </Link>
                 </li>
                 <li>
-                    <Link to="#">
+                    <Link to="/ClassOptionsSetup">
                         <span className="icon"><div className="icons"><FiGrid/></div></span>
                         <span className="title">分類管理</span>
                     </Link>

@@ -84,6 +84,7 @@ export const formats = [
   "indent",
   "link",
   "image",
+  "video",
   "color",
   "code-block"
 ];
