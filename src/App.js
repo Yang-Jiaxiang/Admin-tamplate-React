@@ -9,7 +9,7 @@ function App() {
     return ( 
       <Router >
         <Menu/>
-        <div className='content'>
+        <div className='contentpage'>
           <Switch>
             <Route path='/CreateNews' exact><CreateNews/></Route>ClassOptions
             <Route path='/ClassOptionsSetup' exact><ClassOptionsSetup/></Route>

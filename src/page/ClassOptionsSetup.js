@@ -1,4 +1,6 @@
 import React from 'react'
+import {Button, Input, List,Item}from 'semantic-ui-react'
+
 
 function ClassOptionsSetup(){
 
@@ -11,10 +13,18 @@ function ClassOptionsSetup(){
     for(var i=0;i<JSON.stringify(ClassOptions.length);i++){
         console.log(JSON.stringify(ClassOptions[i]));
     }
-
+    
     return (
         <>
-            aaa
+            <Input action='新增' placeholder='輸入分類名稱...' />
+            <List divided verticalAlign='middle'>
+                <List.Item>
+                <List.Content floated='left'>
+                    <Button>刪除</Button>
+                </List.Content>
+               <List.Content floated='right' style={{padding:'10px'}}>Lena</List.Content>
+                </List.Item>
+            </List>
         </>
     )
 }

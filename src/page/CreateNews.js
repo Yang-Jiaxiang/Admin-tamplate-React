@@ -77,7 +77,7 @@ function CreateNews(Period,NewsClass) {
                 <Header as='h1' style={{margin:'5px'}}>{title}</Header>
                 <Header  as='h6' style={{margin:'5px'}}>第{newsPeriodOptions}期週刊．{newsClassOptions}．{newCurrentDate}</Header>
                 <ReactQuill style={{margin:'10px'}} value={quillValue} readOnly={true} theme={'bubble'} />
-                <Form.Button style={{margin:'10px'}} onClick={()=>{setIsModalOpen(false)}}>關閉</Form.Button>
+                <Button style={{margin:'10px'}} onClick={()=>{setIsModalOpen(false)}}>關閉</Button>
             </Modal>
         </>
         
