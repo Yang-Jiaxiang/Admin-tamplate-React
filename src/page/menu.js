@@ -33,7 +33,7 @@ const Menu=()=>{
                     </Link>
                 </li>
                 <li>
-                    <Link to="#">
+                    <Link to="/TurnImage">
                         <span className="icon"><div className="icons"><FiImage/></div></span>
                         <span className="title">輪播管理</span>
                     </Link>
