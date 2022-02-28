@@ -1,40 +1,39 @@
+import * as React from "react";
 import "./App.css";
 import Menu from "./component/menu";
-import CreateNews from "./page/CreateNews";
-import ClassOptionsSetup from "./page/ClassOptionsSetup";
-import TurnImage from "./page/TurnImage";
+import CreatePost from "./page/CreatePost";
+import Category from "./page/Category";
 import PostList from "./page/PostList";
-import { Grid, Paper } from "@mui/material";
+import Login from "./page/Login";
+import { Grid, Container } from "@mui/material";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
-  return (
-    <Router>
-      <Grid container style={{ width: "100%", margin: "0 auto" }}>
-        <Grid item xs={3}>
-          <Menu />
-        </Grid>
-        <Grid item xs={9}>
-          <div className="contentpage">
+    return (
+        <Router>
             <Switch>
-              <Route path="/CreateNews" exact>
-                <CreateNews />
-              </Route>
-              <Route path="/PostList" exact>
-                <PostList />
-              </Route>
-              <Route path="/ClassOptionsSetup" exact>
-                <ClassOptionsSetup />
-              </Route>
-              <Route path="/TurnImage" exact>
-                <TurnImage />
-              </Route>
+                <Route path="/Login" exact>
+                    <Login />
+                </Route>
+                <Grid container style={{ width: "100%", margin: "0 auto" }}>
+                    <Grid item xs={2}>
+                        <Menu />
+                    </Grid>
+                    <Grid item xs={9} style={{ paddingTop: "40px" }}>
+                        <Route path="/CreatePost" exact>
+                            <CreatePost />
+                        </Route>
+                        <Route path="/PostList" exact>
+                            <PostList />
+                        </Route>
+                        <Route path="/Category" exact>
+                            <Category />
+                        </Route>
+                    </Grid>
+                </Grid>
             </Switch>
-          </div>
-        </Grid>
-      </Grid>
-    </Router>
-  );
+        </Router>
+    );
 }
 
 export default App;

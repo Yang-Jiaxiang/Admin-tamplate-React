@@ -15,7 +15,7 @@ const Menu=()=>{
                     </Link>
                 </li>
                 <li>
-                    <Link to="/CreateNews">
+                    <Link to="/CreatePost">
                         <span className="icon"><div className="icons"><FiFilePlus/></div></span>
                         <span className="title">新增期刊</span>
                     </Link>
@@ -27,7 +27,7 @@ const Menu=()=>{
                     </Link>
                 </li>
                 <li>
-                    <Link to="/ClassOptionsSetup">
+                    <Link to="/Category">
                         <span className="icon"><div className="icons"><FiGrid/></div></span>
                         <span className="title">分類管理</span>
                     </Link>

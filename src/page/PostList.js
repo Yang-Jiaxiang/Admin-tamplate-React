@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 
 const apiURL = `http://localhost:3090/periodical`;
@@ -8,6 +7,7 @@ const apiURL = `http://localhost:3090/periodical`;
 const PostList = () => {
   const [posts, setPosts] = useState([]);
   const [category, setCategory] = useState([]);
+  const [pageSize, setPageSize] = React.useState(10);
   useEffect(() => {
     axios
       .all([
@@ -15,6 +15,7 @@ const PostList = () => {
         axios.get(`${apiURL}/api/category`),
       ])
       .then(
+        //關聯post.categoryID
         axios.spread((data1, data2) => {
           const postResult = data1.data.results;
           const categoryResult = data2.data.result;
@@ -22,6 +23,10 @@ const PostList = () => {
             item.categoryID = categoryResult.find(
               (category) => item.categoryID === category.id
             ).name;
+          });
+          postResult.forEach((item) => {
+            item.posttime = `${item.noYear}-${item.noMonth}`;
+            console.log(item);
           });
           setPosts(postResult);
           setCategory(categoryResult);
@@ -45,7 +50,7 @@ const PostList = () => {
       width: 150,
     },
     {
-      field: "updateTime",
+      field: "posttime",
       headerName: "更新日期",
       type: "datatime",
       width: 200,
@@ -63,16 +68,20 @@ const PostList = () => {
 
   return (
     <>
-      期刊管理
-      <div style={{ height: 600, width: 1200 }}>
-        <DataGrid
-          rows={posts}
-          columns={columns}
-          pageSize={9}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
-          disableSelectionOnClick
-        />
+      <div className="headerTitle">期刊管理</div>
+      <div className="pagecontent">
+        <div style={{ display: "flex", height: "100%"}}>
+          <div style={{ flexGrow: 1 }}>
+            <DataGrid
+              rows={posts}
+              columns={columns}
+              pageSize={pageSize}
+              onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+              rowsPerPageOptions={[5, 10, 20]}
+              autoHeight={true}
+            />
+          </div>
+        </div>
       </div>
     </>
   );

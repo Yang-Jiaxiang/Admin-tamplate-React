@@ -1,5 +1,13 @@
 import React from "react";
 import { Quill } from "react-quill";
+import ResizeModule from "@botom/quill-resize-module";
+import axios from 'axios'
+import { ImageHandler, VideoHandler, AttachmentHandler } from "quill-upload";
+//提供Quill套件image、video改變大小用
+Quill.register("modules/resize", ResizeModule);
+Quill.register("modules/imageHandler", ImageHandler);
+Quill.register("modules/videoHandler", VideoHandler);
+Quill.register("modules/attachmentHandler", AttachmentHandler);
 
 // Custom Undo button icon component for Quill editor. You can import it directly
 // from 'quill/assets/icons/undo.svg' but I found that a number of loaders do not
@@ -63,7 +71,38 @@ export const modules = {
     delay: 500,
     maxStack: 100,
     userOnly: true
-  }
+  },
+  resize: {
+    locale: {
+      // 圖片、影片調整大小以及定位功能
+      altTip: "Hold down the alt key to zoom",
+      floatLeft: "Left",
+      floatRight: "Right",
+      center: "Center",
+      restore: "Restore",
+    },
+  },
+  videoHandler: {
+    upload: (file) => {
+      // return a Promise that resolves in a link to the uploaded image
+      return new Promise((resolve) => {
+        const fd = new FormData();
+        fd.append("video", file);
+        _onUpload(fd, resolve);
+      });
+    },
+  },
+  imageHandler: {
+    upload: file => {
+      return new Promise((resolve) => {
+        const fd = new FormData();
+        fd.append("file", file);
+        fd.append("fileName", file.name);
+
+        _onUpload(fd, resolve);
+      });
+    }
+  },
 };
 
 // Formats objects for setting up the Quill editor
@@ -157,4 +196,9 @@ export const QuillToolbar = () => (
   </div>
 );
 
+const _onUpload =  async(fd, resolve)=> {
+  axios.defaults.withCredentials = true
+  const result = await axios.post('http://localhost:3090/periodical/api/upload/video',fd);
+  resolve(`http://localhost:3090/video/${result.data.fileName}`);
+};
 export default QuillToolbar;

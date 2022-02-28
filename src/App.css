@@ -17,6 +17,12 @@
 body {
     min-height: 100vh;
     overflow-x: hidden;
+    background-color: rgb(209, 238, 255);
+}
+.pagecontent{
+    background-color: #FFF;
+    border-radius: 10px;
+    padding:10px 20px 20px 20px;
 }
 
 .container {
@@ -26,7 +32,7 @@ body {
 
 .navigation {
     position: fixed;
-    width: 250px;
+    width: 15%;
     height: 100%;
     background-color: var(--blue);
     border-left: 10px solid var(--blue);
@@ -230,4 +236,16 @@ body {
 .ql-editor .ql-video {
     width: 100%;
     height: 400px;
+}
+
+.headerTitle{
+    font-weight: bold;
+    font-size: 2em;
+    padding-bottom: 20px;
+}
+
+@media screen and (max-width: 1300px){
+    .navigation {
+        width: 80px;
+    }
 }
