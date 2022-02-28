@@ -16,7 +16,10 @@ function ClassOptionsSetup(){
     
     return (
         <>
-            <Input action='新增' placeholder='輸入分類名稱...' />
+            <Input 
+                action='新增' 
+                placeholder='輸入分類名稱...'
+            />
             <List divided verticalAlign='middle'>
                 <List.Item>
                     <List.Content floated='left'>
