@@ -21,7 +21,7 @@ const Menu=()=>{
                     </Link>
                 </li>
                 <li>
-                    <Link to="#">
+                    <Link to="/PostList">
                         <span className="icon"><div className="icons"><FiCopy/></div></span>
                         <span className="title">期刊管理</span>
                     </Link>
