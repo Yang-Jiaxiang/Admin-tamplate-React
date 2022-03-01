@@ -3,6 +3,9 @@ import { Quill } from "react-quill";
 import ResizeModule from "@botom/quill-resize-module";
 import axios from "axios";
 import { ImageHandler, VideoHandler, AttachmentHandler } from "quill-upload";
+const config = require('../config/default.json')
+
+const apiURL = config.apiURL;
 //提供Quill套件image、video改變大小用
 Quill.register("modules/resize", ResizeModule);
 Quill.register("modules/imageHandler", ImageHandler);
@@ -202,7 +205,7 @@ const _onUpload = async (fd, resolve,type) => {
   axios.defaults.withCredentials = true;
     const result = 
     await axios.post(
-        `http://localhost:3090/periodical/api/upload/${type}`,fd
+        `${apiURL}/api/upload/${type}`,fd
     )
     .catch(err=>console.log(err));
     resolve(`http://localhost:3090/${type}/${result.data.fileName}`);

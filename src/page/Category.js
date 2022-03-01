@@ -1,4 +1,6 @@
 import React from "react";
+const config = require('../config/default.json')
+const apiURL = config.apiURL;
 
 function Category() {
   return (
