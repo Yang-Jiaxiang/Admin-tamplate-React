@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
+const config = require('../config/default.json')
 
-const apiURL = `http://localhost:3090/periodical`;
+const apiURL = config.apiURL;
 
 const PostList = () => {
   const [posts, setPosts] = useState([]);
