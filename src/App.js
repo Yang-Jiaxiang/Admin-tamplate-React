@@ -5,6 +5,7 @@ import CreatePost from "./page/CreatePost";
 import Category from "./page/Category";
 import PostList from "./page/PostList";
 import Login from "./page/Login";
+import EditPost from './page/EditPost'
 import { Grid } from "@mui/material";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -28,6 +29,9 @@ function App() {
                         </Route>
                         <Route path="/Category" exact>
                             <Category />
+                        </Route>
+                        <Route path="/EditPost" exact>
+                            <EditPost />
                         </Route>
                     </Grid>
                 </Grid>

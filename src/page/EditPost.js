@@ -25,7 +25,7 @@ const config = require("../config/default.json");
 
 const apiURL = config.apiURL;
 
-function CreatePost() {
+function EditPost() {
     var date = new Date();
     const [open, setOpen] = useState(false);
     const [newpostsperiodNumber, setNewpostsperiodNumber] = useState(); //取的最新期別
@@ -230,4 +230,4 @@ function CreatePost() {
         </>
     );
 }
-export default CreatePost;
+export default EditPost;
