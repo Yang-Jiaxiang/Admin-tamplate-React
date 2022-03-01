@@ -33,21 +33,9 @@ const Menu=()=>{
                     </Link>
                 </li>
                 <li>
-                    <Link to="/TurnImage">
-                        <span className="icon"><div className="icons"><FiImage/></div></span>
-                        <span className="title">輪播管理</span>
-                    </Link>
-                </li>
-                <li>
                     <Link to="#">
                         <span className="icon"><div className="icons"><AiOutlineUsergroupAdd/></div></span>
                         <span className="title">成員管理</span>
-                    </Link>
-                </li>
-                <li>
-                    <Link to="#">
-                        <span className="icon"><div className="icons"><AiFillMail/></div></span>
-                        <span className="title">發送郵件</span>
                     </Link>
                 </li>
                 <li>
