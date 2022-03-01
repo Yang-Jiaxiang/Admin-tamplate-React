@@ -30,7 +30,7 @@ function App() {
                         <Route path="/Category" exact>
                             <Category />
                         </Route>
-                        <Route path="/EditPost" exact>
+                        <Route path="/EditPost">
                             <EditPost />
                         </Route>
                     </Grid>
