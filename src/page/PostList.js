@@ -18,7 +18,8 @@ const PostList = () => {
         //關聯post.categoryID
         axios.spread((data1, data2) => {
           const postResult = data1.data.results;
-          const categoryResult = data2.data.result;
+          const categoryResult = data2.data.results;
+          console.log(postResult);
           postResult.forEach((item) => {
             item.categoryID = categoryResult.find(
               (category) => item.categoryID === category.id
@@ -54,15 +55,6 @@ const PostList = () => {
       headerName: "更新日期",
       type: "datatime",
       width: 200,
-    },
-    {
-      field: "fullName",
-      headerName: "Full name",
-      description: "This column has a value getter and is not sortable.",
-      sortable: false,
-      width: 160,
-      valueGetter: (params) =>
-        `${params.row.firstName || ""} ${params.row.lastName || ""}`,
     },
   ];
 

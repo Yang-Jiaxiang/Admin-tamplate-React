@@ -10,7 +10,7 @@ const Menu=()=>{
             <ul>
                 <li>
                     <Link to="#">
-                        <span className="icon"><div className="icons"><FiLayers/></div></span>
+                        {/*<span className="icon"><div className="icons"><FiLayers/></div></span>*/}
                         <span className="title">北護期刊後台管理</span>
                     </Link>
                 </li>

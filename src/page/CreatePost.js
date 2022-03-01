@@ -41,7 +41,7 @@ function CreatePost() {
         //關聯post.categoryID
         axios.spread((data1, data2) => {
           const postResult = data1.data.results[0].periodNumber;
-          const categoryResult = data2.data.result;
+          const categoryResult = data2.data.results;
           categoryResult.forEach((item) => {
             totalcategory.push(item.name);
           });
