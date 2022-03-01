@@ -5,7 +5,7 @@ import CreatePost from "./page/CreatePost";
 import Category from "./page/Category";
 import PostList from "./page/PostList";
 import Login from "./page/Login";
-import { Grid, Container } from "@mui/material";
+import { Grid } from "@mui/material";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {

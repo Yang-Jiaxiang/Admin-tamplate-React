@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import EditorToolbar, { modules, formats } from "./EditorToolbar";
+import EditorToolbar, { modules } from "./EditorToolbar";
 import {
     FormControl,
     InputLabel,
@@ -10,7 +10,11 @@ import {
     TextField,
     Button,
     Stack,
+    Alert,
+    IconButton,
+    Collapse,
 } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
@@ -21,33 +25,9 @@ const config = require("../config/default.json");
 
 const apiURL = config.apiURL;
 
-const SendOnClick = (
-    periodNumber,
-    noYear,
-    noMonth,
-    categoryID,
-    subject,
-    writer,
-    content
-) => {
-    axios.defaults.withCredentials = true;
-    axios
-        .post(`${apiURL}/api/post`, {
-            periodNumber: periodNumber,
-            noYear: noYear,
-            noMonth: noMonth,
-            categoryID: categoryID,
-            writer: writer,
-            content: content,
-            subject: subject,
-        })
-        .then((response) => console.log(response))
-        .catch((error) => console.log(error.request));
-};
-
 function CreatePost() {
     var date = new Date();
-
+    const [open, setOpen] = useState(false);
     const [newpostsperiodNumber, setNewpostsperiodNumber] = useState(); //取的最新期別
     //存取最新期別+2-2
     const nowpostsperiodNumber = [
@@ -57,8 +37,8 @@ function CreatePost() {
         Number(newpostsperiodNumber) + 1,
         Number(newpostsperiodNumber) + 2,
     ];
-    const [totalcategory, setTotalCategory] = useState([{ name: "", id: "" }]);
-    const [postime, setPostime] = React.useState(
+    const [totalcategory] = useState([{ name: "", id: "" }]);
+    const [postime] = React.useState(
         `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
     ); //預設時間
 
@@ -93,10 +73,46 @@ function CreatePost() {
             });
     }, []);
 
+    const SendOnClick = () => {
+        axios.defaults.withCredentials = true;
+        axios
+            .post(`${apiURL}/api/post`, {
+                periodNumber: periodNumber,
+                noYear: noYear,
+                noMonth: noMonth,
+                categoryID: categoryID,
+                writer: writer,
+                content: content,
+                subject: subject,
+            })
+            .then((response) => console.log(response))
+            .catch((error) => console.log(error.request),setOpen(true));
+    };
+
     return (
         <>
             <div className="headerTitle">新增期刊</div>
             <div className="pagecontent">
+                <Collapse in={open}>
+                    <Alert
+                        severity="error"
+                        action={
+                            <IconButton
+                                aria-label="close"
+                                color="inherit"
+                                size="small"
+                                onClick={() => {
+                                    setOpen(false);
+                                }}
+                            >
+                                <CloseIcon fontSize="inherit" />
+                            </IconButton>
+                        }
+                    >
+                        發送失敗
+                    </Alert>
+                </Collapse>
+
                 <div style={{ paddingTop: "10px" }}>
                     <h3>輸入標題</h3>
                     <TextField
@@ -204,15 +220,7 @@ function CreatePost() {
                         variant="contained"
                         endIcon={<SendIcon />}
                         onClick={() => {
-                            SendOnClick(
-                                periodNumber,
-                                noYear,
-                                noMonth,
-                                categoryID,
-                                subject,
-                                writer,
-                                content
-                            );
+                            SendOnClick();
                         }}
                     >
                         Send
